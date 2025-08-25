@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.name|title }} - الملف الشخصي</title>
+    <style>
+        body { font-family: Arial; direction: rtl; text-align: right; padding: 40px; }
+        h1 { color: #333; }
+        ul { list-style: square; }
+    </style>
+</head>
+<body>
+
+    <h1>مرحبًا، أنا {{ user.name|title }}</h1>
+    <p>{{ user.bio|truncatewords:20 }}</p>
+
+    <h2>📌 المهارات:</h2>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill|title }}</li>
+        {% empty %}
+            <li>لا توجد مهارات حالياً</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>📅 التاريخ اليوم:</strong> {% now "Y-m-d" %}</p>
+
+</body>
+</html>
+
+
+
+
+
+{% endblock content %}
+
